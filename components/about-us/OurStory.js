@@ -1,186 +1,225 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useEffect } from 'react'
+import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
 import Image from 'next/image'
 
-const indiaPoints = [
-  'Explosive streaming growth',
-  'Expanding festival circuits',
-  'New venues across metros',
-  'Global-minded artists',
-  'Underground communities building unique sounds',
+const storyMilestones = [
+  {
+    year: '2021',
+    title: 'THE VISION',
+    description: 'BridgeLine Creative was conceived at the intersection of two cultural powerhouses.',
+    image: 'https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&q=80',
+    location: 'Mumbai',
+  },
+  {
+    year: '2022',
+    title: 'FIRST ARTISTS',
+    description: 'Signed our founding roster of breakthrough electronic artists.',
+    image: 'https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=800&q=80',
+    location: 'Delhi',
+  },
+  {
+    year: '2023',
+    title: 'UK EXPANSION',
+    description: 'Established operations in the United Kingdom, opening doors to Europe.',
+    image: 'https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=800&q=80',
+    location: 'London',
+  },
+  {
+    year: '2024',
+    title: 'GLOBAL REACH',
+    description: 'Cross-border collaborations and international touring routes established.',
+    image: 'https://images.unsplash.com/photo-1429514513361-8fa32282fd5f?w=800&q=80',
+    location: 'Worldwide',
+  },
 ]
 
-const ukPoints = [
-  'Most influential electronic genres',
-  'Legendary clubs and festivals',
-  'Industry-leading talent agencies',
-  'Established promoter networks',
-  'Deep-rooted underground culture',
-]
+const FloatingWord = ({ children, delay = 0 }) => {
+  return (
+    <motion.span
+      initial={{ opacity: 0, y: 50, rotateX: -90 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true }}
+      transition={{ 
+        duration: 0.8, 
+        delay, 
+        type: 'spring',
+        stiffness: 100,
+        damping: 15 
+      }}
+      className="inline-block"
+    >
+      {children}
+    </motion.span>
+  )
+}
 
 export default function OurStory() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const containerRef = useRef(null)
+  const horizontalRef = useRef(null)
+  const isInView = useInView(containerRef, { once: true, margin: '-100px' })
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end']
+  })
+
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-75%'])
+  const smoothX = useSpring(x, { stiffness: 100, damping: 30 })
+  
+  const lineWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0])
 
   return (
-    <section ref={ref} className="relative py-32 px-6 md:px-12 lg:px-24 bg-[#0a0a0a] overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 opacity-5">
-        <Image
-          src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1920&q=80"
-          alt=""
-          fill
-          className="object-cover"
-        />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Section header */}
+    <section ref={containerRef} className="relative h-[400vh] bg-black">
+      {/* Sticky container */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Background pattern - animated dots grid */}
+        <div className="absolute inset-0 opacity-20">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgba(212, 0, 0, 0.3) 1px, transparent 0)`,
+              backgroundSize: '50px 50px',
+            }}
+          />
+        </div>
+        
+        {/* Section intro */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          style={{ opacity }}
+          className="absolute top-24 left-6 md:left-12 lg:left-24 z-20"
         >
-          <p className="text-rolling-red text-sm tracking-[0.3em] uppercase mb-4">Our Story</p>
+          <p className="text-rolling-red text-sm tracking-[0.3em] uppercase mb-2">Our Journey</p>
           <h2 
-            className="text-4xl md:text-6xl text-white leading-[0.95] mb-6"
+            className="text-3xl md:text-5xl text-white"
             style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.02em' }}
           >
-            BORN IN <span className="text-rolling-red">INDIA.</span><br />
-            GROWING IN THE <span className="text-rolling-red">UK.</span><br />
-            OPEN TO THE WORLD.
+            <FloatingWord delay={0}>FROM</FloatingWord>{' '}
+            <FloatingWord delay={0.1}><span className="text-rolling-red">INDIA</span></FloatingWord>{' '}
+            <FloatingWord delay={0.2}>TO</FloatingWord>{' '}
+            <FloatingWord delay={0.3}>THE</FloatingWord>{' '}
+            <FloatingWord delay={0.4}><span className="text-rolling-red">WORLD</span></FloatingWord>
           </h2>
-          <p className="text-white/60 text-lg max-w-3xl mx-auto">
-            BridgeLine Creative emerged at the intersection of two powerful cultural hubs.
-          </p>
         </motion.div>
 
-        {/* Two columns - India & UK */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-20">
-          {/* India */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative group"
-          >
-            <div className="relative overflow-hidden">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80"
-                  alt="India music scene"
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute inset-0 bg-rolling-red/20 group-hover:bg-rolling-red/10 transition-colors duration-500" />
-              </div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 
-                  className="text-4xl text-rolling-red mb-4"
-                  style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.05em' }}
-                >
-                  INDIA
-                </h3>
-                <p className="text-white/70 mb-6">
-                  A rapidly rising independent music scene fueled by:
-                </p>
-                <ul className="space-y-2">
-                  {indiaPoints.map((point, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.4, delay: 0.4 + idx * 0.1 }}
-                      className="flex items-center gap-2 text-white/80 text-sm"
-                    >
-                      <span className="text-rolling-red">▸</span>
-                      {point}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* UK */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative group"
-          >
-            <div className="relative overflow-hidden">
-              <div className="aspect-[4/3] relative">
-                <Image
-                  src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80"
-                  alt="UK music scene"
-                  fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute inset-0 bg-white/10 group-hover:bg-white/5 transition-colors duration-500" />
-              </div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 
-                  className="text-4xl text-white mb-4"
-                  style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.05em' }}
-                >
-                  UNITED KINGDOM
-                </h3>
-                <p className="text-white/70 mb-6">
-                  A global powerhouse known for:
-                </p>
-                <ul className="space-y-2">
-                  {ukPoints.map((point, idx) => (
-                    <motion.li
-                      key={idx}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 }}
-                      className="flex items-center gap-2 text-white/80 text-sm"
-                    >
-                      <span className="text-white">▸</span>
-                      {point}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* The Gap / Solution */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="bg-black/50 border border-white/10 p-12"
+        {/* Progress line */}
+        <motion.div 
+          className="absolute top-1/2 left-0 right-0 h-px bg-white/10 z-10"
+          style={{ opacity }}
         >
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-white/50 text-lg mb-6">Our founders recognized a massive gap:</p>
-            <p className="text-xl md:text-2xl text-white mb-4 leading-relaxed">
-              <span className="text-rolling-red font-semibold">Indian artists</span> had the talent and audience — 
-              but lacked structured access to global ecosystems.
-            </p>
-            <p className="text-xl md:text-2xl text-white mb-8 leading-relaxed">
-              Simultaneously, <span className="text-rolling-red font-semibold">UK promoters and brands</span> sought 
-              emerging markets and new cultural narratives.
-            </p>
-            <div className="h-px bg-gradient-to-r from-transparent via-rolling-red to-transparent mb-8" />
-            <p className="text-white/80 text-lg">
-              BridgeLine Creative was designed to sit precisely in the middle — 
-              <span className="text-rolling-red"> connecting people, cultures, networks, and opportunities.</span>
-            </p>
+          <motion.div 
+            className="h-full bg-gradient-to-r from-rolling-red to-white"
+            style={{ width: lineWidth }}
+          />
+        </motion.div>
+
+        {/* Horizontal scroll container */}
+        <motion.div 
+          ref={horizontalRef}
+          style={{ x: smoothX }}
+          className="absolute top-0 h-full flex items-center pt-32"
+        >
+          <div className="flex gap-4 md:gap-8 pl-6 md:pl-12 lg:pl-24 pr-[50vw]">
+            {storyMilestones.map((milestone, index) => (
+              <motion.div
+                key={milestone.year}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[35vw] group"
+              >
+                {/* Card */}
+                <div className="relative h-[60vh] overflow-hidden border border-white/10 group-hover:border-rolling-red/50 transition-colors duration-500">
+                  {/* Image with parallax */}
+                  <motion.div 
+                    className="absolute inset-0"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <Image
+                      src={milestone.image}
+                      alt={milestone.title}
+                      fill
+                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-rolling-red/20 group-hover:bg-rolling-red/10 transition-colors duration-500" />
+                  </motion.div>
+                  
+                  {/* Year - massive background */}
+                  <motion.span 
+                    className="absolute -right-4 top-4 text-[12rem] md:text-[15rem] text-white/5 group-hover:text-rolling-red/10 transition-colors duration-500 font-bold leading-none select-none"
+                    style={{ fontFamily: 'var(--font-bebas)' }}
+                  >
+                    {milestone.year}
+                  </motion.span>
+                  
+                  {/* Timeline dot */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+                    <motion.div 
+                      className="w-4 h-4 bg-rolling-red rounded-full"
+                      animate={{ 
+                        scale: [1, 1.2, 1],
+                        boxShadow: [
+                          '0 0 0 0 rgba(212, 0, 0, 0.4)',
+                          '0 0 0 20px rgba(212, 0, 0, 0)',
+                          '0 0 0 0 rgba(212, 0, 0, 0)'
+                        ]
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                      <span className="text-rolling-red text-sm tracking-wider uppercase mb-2 block">
+                        {milestone.location}
+                      </span>
+                      <h3 
+                        className="text-3xl md:text-4xl text-white mb-3"
+                        style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.02em' }}
+                      >
+                        {milestone.title}
+                      </h3>
+                      <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                        {milestone.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Index number */}
+                  <div className="absolute top-8 left-8">
+                    <span className="text-white/20 text-sm tracking-widest font-mono">
+                      {String(index + 1).padStart(2, '0')} / {String(storyMilestones.length).padStart(2, '0')}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
+        </motion.div>
+
+        {/* Scroll hint */}
+        <motion.div 
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <span className="text-white/40 text-xs uppercase tracking-widest">Scroll</span>
+          <svg className="w-6 h-6 text-rolling-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </motion.div>
       </div>
     </section>
   )
 }
-
