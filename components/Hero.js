@@ -31,21 +31,9 @@ export default function Hero() {
       />
       
       {/* Content */}
-      <div className="relative z-30 min-h-screen flex flex-col justify-end pb-20 px-6 md:px-12 lg:px-24">
-        {/* Top tagline */}
-        <div className="absolute top-8 left-6 md:left-12 lg:left-24">
-          <p className="text-white/60 text-xs tracking-[0.3em] uppercase font-light">
-            India — UK
-          </p>
-        </div>
-        
+      <div className="relative z-30 min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-24">
         {/* Main content */}
         <div className="max-w-5xl">
-          {/* Eyebrow text */}
-          <p className="text-white/70 text-sm md:text-base tracking-[0.2em] uppercase mb-6 font-light">
-            Talent Management • Creative Consulting • Culture Building
-          </p>
-          
           {/* Main headline */}
           <h1 className="hero-headline text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] mb-8">
             <span className="text-rolling-red">Shaping</span>
