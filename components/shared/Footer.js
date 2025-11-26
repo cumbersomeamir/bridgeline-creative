@@ -48,12 +48,39 @@ export default function Footer() {
             className="lg:col-span-1"
           >
             <Link href="/" className="inline-block mb-6">
-              <h4 
-                className="text-2xl text-white"
-                style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.05em' }}
-              >
-                BRIDGE<span className="text-rolling-red">LINE</span>
-              </h4>
+              <div className="flex flex-col items-start leading-none">
+                {/* BRIDGELINE text */}
+                <span 
+                  className="text-xl md:text-2xl text-white font-bold tracking-wide"
+                  style={{ 
+                    fontFamily: 'var(--font-inter)',
+                    fontStyle: 'italic',
+                    fontWeight: 700,
+                  }}
+                >
+                  BRIDGELINE
+                </span>
+                
+                {/* Diagonal lines */}
+                <div className="relative h-[3px] mt-0.5 w-full overflow-visible">
+                  <div 
+                    className="absolute left-0 right-0 h-[1.5px] bg-white origin-left"
+                    style={{ transform: 'rotate(-3deg)', top: '0' }}
+                  />
+                  <div 
+                    className="absolute left-0 right-0 h-[1px] bg-white/70 origin-left"
+                    style={{ transform: 'rotate(-3deg)', top: '3px' }}
+                  />
+                </div>
+                
+                {/* CREATIVE text */}
+                <span 
+                  className="block text-[9px] md:text-[10px] text-white/90 tracking-[0.35em] mt-1"
+                  style={{ fontFamily: 'var(--font-inter)', fontWeight: 300 }}
+                >
+                  CREATIVE
+                </span>
+              </div>
             </Link>
             <p className="text-white/40 text-sm leading-relaxed mb-6">
               India–UK based talent management and culture-building agency shaping the next generation of artists, experiences, and IPs.

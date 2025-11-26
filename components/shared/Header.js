@@ -45,27 +45,43 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="group flex items-center gap-1">
-              <motion.span 
-                className="text-xl md:text-2xl text-white tracking-wider"
-                style={{ fontFamily: 'var(--font-bebas)' }}
+            <Link href="/" className="group flex flex-col items-start leading-none">
+              <motion.div
                 whileHover={{ scale: 1.02 }}
+                className="relative"
               >
-                BRIDGE
-              </motion.span>
-              <motion.span 
-                className="text-xl md:text-2xl text-rolling-red tracking-wider"
-                style={{ fontFamily: 'var(--font-bebas)' }}
-                whileHover={{ scale: 1.02 }}
-              >
-                LINE
-              </motion.span>
-              <motion.span 
-                className="hidden sm:inline text-xl md:text-2xl text-white/50 tracking-wider ml-1"
-                style={{ fontFamily: 'var(--font-bebas)' }}
-              >
-                CREATIVE
-              </motion.span>
+                {/* BRIDGELINE text */}
+                <span 
+                  className="text-lg sm:text-xl md:text-2xl text-white font-bold tracking-wide"
+                  style={{ 
+                    fontFamily: 'var(--font-inter)',
+                    fontStyle: 'italic',
+                    fontWeight: 700,
+                  }}
+                >
+                  BRIDGELINE
+                </span>
+                
+                {/* Diagonal lines */}
+                <div className="relative h-[3px] mt-0.5 overflow-visible">
+                  <div 
+                    className="absolute left-0 right-0 h-[1.5px] bg-white origin-left"
+                    style={{ transform: 'rotate(-3deg)', top: '0' }}
+                  />
+                  <div 
+                    className="absolute left-0 right-0 h-[1px] bg-white/70 origin-left"
+                    style={{ transform: 'rotate(-3deg)', top: '3px' }}
+                  />
+                </div>
+                
+                {/* CREATIVE text */}
+                <span 
+                  className="block text-[8px] sm:text-[9px] md:text-[10px] text-white/90 tracking-[0.35em] mt-1"
+                  style={{ fontFamily: 'var(--font-inter)', fontWeight: 300 }}
+                >
+                  CREATIVE
+                </span>
+              </motion.div>
             </Link>
 
             {/* Desktop Navigation */}
