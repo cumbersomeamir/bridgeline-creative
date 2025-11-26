@@ -15,24 +15,44 @@ export default function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
+    setError('')
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError('')
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setSubmitted(true)
-    setFormData({ name: '', email: '', subject: '', type: '', message: '' })
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', subject: '', type: '', message: '' })
+      } else {
+        setError(data.error || 'Failed to submit form. Please try again.')
+      }
+    } catch (err) {
+      console.error('Form submission error:', err)
+      setError('Failed to submit form. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const inquiryTypes = [
@@ -90,6 +110,12 @@ export default function ContactForm() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Error message */}
+                {error && (
+                  <div className="p-4 border border-red-500/50 bg-red-500/10 text-red-400 text-sm">
+                    {error}
+                  </div>
+                )}
                 {/* Name */}
                 <div>
                   <label className="block text-white/50 text-sm mb-2">Name *</label>
