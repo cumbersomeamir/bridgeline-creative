@@ -19,8 +19,11 @@ export default function ServiceCard({ service, index }) {
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className={`group relative grid lg:grid-cols-2 gap-0 ${isEven ? '' : 'lg:direction-rtl'}`}
     >
-      {/* Image side */}
-      <div className={`relative h-[400px] lg:h-[500px] overflow-hidden ${!isEven ? 'lg:order-2' : ''}`}>
+      {/* Image side - Clickable */}
+      <Link 
+        href={`/services/${service.slug}`}
+        className={`relative h-[400px] lg:h-[500px] overflow-hidden cursor-pointer block ${!isEven ? 'lg:order-2' : ''}`}
+      >
         <Image
           src={service.image}
           alt={service.title}
@@ -39,7 +42,17 @@ export default function ServiceCard({ service, index }) {
             0{index + 1}
           </span>
         </div>
-      </div>
+        
+        {/* Click indicator */}
+        <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="flex items-center gap-2 px-4 py-2 bg-rolling-red/90 backdrop-blur-sm">
+            <span className="text-white text-xs tracking-wider uppercase">View Service</span>
+            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </div>
+      </Link>
       
       {/* Content side */}
       <div className={`relative flex flex-col justify-center p-8 lg:p-12 bg-[#0a0a0a] ${!isEven ? 'lg:order-1' : ''}`}>
