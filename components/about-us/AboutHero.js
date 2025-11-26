@@ -27,20 +27,8 @@ export default function AboutHero() {
       <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/70 via-transparent to-black/70" />
       
       {/* Content */}
-      <div className="relative z-20 min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 py-32">
+      <div className="relative z-20 min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-32 pb-20">
         <div className="max-w-5xl">
-          {/* Breadcrumb */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-3 mb-8"
-          >
-            <a href="/" className="text-white/50 text-sm hover:text-rolling-red transition-colors">Home</a>
-            <span className="text-white/30">/</span>
-            <span className="text-rolling-red text-sm">About Us</span>
-          </motion.div>
-          
           {/* Eyebrow */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}

@@ -1,5 +1,7 @@
 import { Inter, Poppins, Bebas_Neue } from "next/font/google";
 import "./globals.css";
+import Header from "../../components/shared/Header";
+import Footer from "../../components/shared/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,7 +33,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${poppins.variable} ${bebasNeue.variable} antialiased bg-black`}
       >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

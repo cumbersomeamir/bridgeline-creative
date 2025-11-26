@@ -56,22 +56,6 @@ export default function ServicesCTA() {
           </div>
         </motion.div>
       </div>
-
-      {/* Footer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="relative z-10 mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4"
-      >
-        <p className="text-white/40 text-sm">© 2024 BridgeLine Creative</p>
-        <div className="flex gap-8">
-          <a href="/" className="text-white/40 text-sm hover:text-rolling-red transition-colors">Home</a>
-          <a href="/about" className="text-white/40 text-sm hover:text-rolling-red transition-colors">About</a>
-          <a href="/#contact" className="text-white/40 text-sm hover:text-rolling-red transition-colors">Contact</a>
-        </div>
-        <p className="text-white/40 text-sm">India — UK</p>
-      </motion.div>
     </section>
   )
 }

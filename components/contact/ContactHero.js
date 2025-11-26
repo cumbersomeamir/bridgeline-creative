@@ -31,15 +31,8 @@ export default function ContactHero() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl"
+          className="max-w-3xl pt-20"
         >
-          {/* Breadcrumb */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <a href="/" className="text-white/50 text-sm hover:text-rolling-red transition-colors">Home</a>
-            <span className="text-white/30">/</span>
-            <span className="text-rolling-red text-sm">Contact</span>
-          </div>
-          
           {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}

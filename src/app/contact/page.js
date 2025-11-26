@@ -1,6 +1,5 @@
 import ContactHero from '../../../components/contact/ContactHero'
 import ContactForm from '../../../components/contact/ContactForm'
-import ContactFooter from '../../../components/contact/ContactFooter'
 
 export const metadata = {
   title: 'Contact | BridgeLine Creative',
@@ -12,8 +11,6 @@ export default function ContactPage() {
     <main>
       <ContactHero />
       <ContactForm />
-      <ContactFooter />
     </main>
   )
 }
-

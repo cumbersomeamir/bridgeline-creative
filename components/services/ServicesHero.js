@@ -26,20 +26,8 @@ export default function ServicesHero() {
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-black/30 to-black" />
       
       {/* Content */}
-      <div className="relative z-20 h-full flex flex-col justify-center px-6 md:px-12 lg:px-24">
+      <div className="relative z-20 h-full flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-20">
         <div className="max-w-4xl">
-          {/* Breadcrumb */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-3 mb-6"
-          >
-            <a href="/" className="text-white/50 text-sm hover:text-rolling-red transition-colors">Home</a>
-            <span className="text-white/30">/</span>
-            <span className="text-rolling-red text-sm">Services</span>
-          </motion.div>
-          
           {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
