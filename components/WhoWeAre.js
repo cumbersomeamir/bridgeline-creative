@@ -101,7 +101,7 @@ export default function WhoWeAre() {
                 className="relative aspect-square overflow-hidden"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=600&q=80"
+                  src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=600&q=80"
                   alt="Music studio"
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
