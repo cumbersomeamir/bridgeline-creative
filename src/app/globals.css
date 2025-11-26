@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
+/* Rolling Stone Inspired Theme for BridgeLine Creative */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --rolling-red: #D40000;
+  --rolling-red-dark: #A00000;
+  --rolling-red-light: #FF1A1A;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-rolling-red: var(--rolling-red);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Rolling Stone Red color utility */
+.text-rolling-red {
+  color: var(--rolling-red);
+}
+
+.bg-rolling-red {
+  background-color: var(--rolling-red);
+}
+
+.border-rolling-red {
+  border-color: var(--rolling-red);
+}
+
+/* Hero headline - Futuristic music-inspired typography */
+.hero-headline {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 60px rgba(212, 0, 0, 0.4),
+    0 0 120px rgba(212, 0, 0, 0.2);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--rolling-red);
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rolling-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rolling-red-light);
+}
+
+/* Smooth animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 0, 0, 0.8);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Film grain effect overlay class */
+.film-grain {
+  position: relative;
+}
+
+.film-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* High contrast text utilities */
+.text-shadow-sharp {
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
+}
+
+/* Link hover effect */
+a {
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Button base styles */
+button, .btn {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Responsive typography scale */
+@media (max-width: 768px) {
+  .hero-headline {
+    text-shadow: 
+      0 0 20px rgba(212, 0, 0, 0.3),
+      2px 2px 0 rgba(0, 0, 0, 0.8);
+  }
 }
