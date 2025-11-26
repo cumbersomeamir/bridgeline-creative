@@ -241,7 +241,7 @@ export default function WhatMakesUsDifferent() {
   const [openId, setOpenId] = useState(1)
 
   return (
-    <section ref={ref} className="relative py-32 px-6 md:px-12 lg:px-24 bg-[#050505] overflow-hidden">
+    <section ref={ref} className="relative py-16 sm:py-32 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#050505] overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 opacity-5">
         <Image

@@ -118,7 +118,7 @@ export default function OurWork() {
       </div>
 
       {/* Section header */}
-      <div className="relative z-10 px-6 md:px-12 lg:px-24 pt-32">
+      <div className="relative z-10 px-4 sm:px-6 md:px-12 lg:px-24 pt-16 sm:pt-32">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -148,7 +148,7 @@ export default function OurWork() {
           onDragStart={() => setIsDragging(true)}
           onDragEnd={handleDragEnd}
           style={{ x: dragX }}
-          className="w-full px-6 md:px-12 lg:px-24 cursor-grab active:cursor-grabbing"
+          className="w-full px-4 sm:px-6 md:px-12 lg:px-24 cursor-grab active:cursor-grabbing"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Content */}
@@ -256,7 +256,7 @@ export default function OurWork() {
       </div>
 
       {/* Navigation */}
-      <div className="relative z-10 px-6 md:px-12 lg:px-24 pb-20">
+      <div className="relative z-10 px-4 sm:px-6 md:px-12 lg:px-24 pb-10 sm:pb-20">
         <div className="flex items-center justify-between">
           {/* Dots */}
           <div className="flex gap-3">

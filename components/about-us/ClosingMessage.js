@@ -128,7 +128,7 @@ export default function ClosingMessage() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 px-6 md:px-12 lg:px-24">
+      <div className="relative z-10 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-5xl mx-auto text-center">
           {/* Header */}
           <motion.div

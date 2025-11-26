@@ -5,7 +5,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// Design 3: Timeline/route inspired layout - ENHANCED
+// Design 3: Timeline/route inspired layout - MOBILE OPTIMIZED
 export default function ServiceDetailTour({ service }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
@@ -14,85 +14,41 @@ export default function ServiceDetailTour({ service }) {
   const indiaMarkets = [
     { city: 'Mumbai', venues: '50+', genre: 'All electronic', peak: 'Oct-Mar' },
     { city: 'Delhi NCR', venues: '35+', genre: 'Techno, House', peak: 'Oct-Feb' },
-    { city: 'Bangalore', venues: '40+', genre: 'Underground, Tech', peak: 'Year-round' },
+    { city: 'Bangalore', venues: '40+', genre: 'Underground', peak: 'Year-round' },
     { city: 'Goa', venues: '25+', genre: 'Psytrance, Techno', peak: 'Nov-Mar' },
     { city: 'Pune', venues: '20+', genre: 'House, Techno', peak: 'Oct-Apr' },
-    { city: 'Hyderabad', venues: '15+', genre: 'House, Commercial', peak: 'Oct-Mar' },
+    { city: 'Hyderabad', venues: '15+', genre: 'House', peak: 'Oct-Mar' },
   ]
 
   const ukMarkets = [
     { city: 'London', venues: '200+', genre: 'All electronic', peak: 'Year-round' },
     { city: 'Manchester', venues: '60+', genre: 'Techno, House', peak: 'Sep-May' },
-    { city: 'Bristol', venues: '40+', genre: 'Bass, DnB, Techno', peak: 'Year-round' },
+    { city: 'Bristol', venues: '40+', genre: 'Bass, DnB', peak: 'Year-round' },
     { city: 'Leeds', venues: '30+', genre: 'Techno, House', peak: 'Sep-May' },
-    { city: 'Glasgow', venues: '35+', genre: 'Techno, Warehouse', peak: 'Year-round' },
-    { city: 'Birmingham', venues: '25+', genre: 'House, Tech House', peak: 'Sep-May' },
+    { city: 'Glasgow', venues: '35+', genre: 'Techno', peak: 'Year-round' },
+    { city: 'Birmingham', venues: '25+', genre: 'House', peak: 'Sep-May' },
   ]
 
   const routingServices = [
-    {
-      icon: '📊',
-      title: 'Market Intelligence',
-      desc: 'Data-driven analysis of venue performance, audience demographics, and optimal timing for each city.',
-    },
-    {
-      icon: '🤝',
-      title: 'Promoter Matching',
-      desc: 'Strategic alignment with promoters whose audiences and brand values match your artistic identity.',
-    },
-    {
-      icon: '📅',
-      title: 'Seasonal Planning',
-      desc: 'Timing tours around peak seasons, festivals, and market demand cycles for maximum impact.',
-    },
-    {
-      icon: '💰',
-      title: 'Fee Optimization',
-      desc: 'Negotiation strategies and market-appropriate pricing to maximize tour revenue.',
-    },
-    {
-      icon: '🛫',
-      title: 'Logistics Coordination',
-      desc: 'Travel planning, accommodation, technical riders, and ground coordination for seamless execution.',
-    },
-    {
-      icon: '📈',
-      title: 'Performance Tracking',
-      desc: 'Post-tour analytics on attendance, engagement, and market growth for future planning.',
-    },
+    { icon: '📊', title: 'Market Intelligence', desc: 'Data-driven analysis of venue performance and timing' },
+    { icon: '🤝', title: 'Promoter Matching', desc: 'Strategic alignment with promoters whose audiences match' },
+    { icon: '📅', title: 'Seasonal Planning', desc: 'Timing tours around peak seasons and festivals' },
+    { icon: '💰', title: 'Fee Optimization', desc: 'Negotiation strategies to maximize tour revenue' },
+    { icon: '🛫', title: 'Logistics', desc: 'Travel, accommodation, and technical coordination' },
+    { icon: '📈', title: 'Performance Tracking', desc: 'Post-tour analytics for future planning' },
   ]
 
   const tourTypes = [
-    {
-      title: 'India Circuit Tour',
-      duration: '2-4 weeks',
-      cities: '4-8 cities',
-      desc: 'Comprehensive routing across major Indian metros, optimized for efficiency and market impact.',
-    },
-    {
-      title: 'UK/EU Showcase',
-      duration: '1-3 weeks',
-      cities: '3-6 cities',
-      desc: 'Strategic exposure to UK/European markets, building relationships with key promoters.',
-    },
-    {
-      title: 'Cross-Border Package',
-      duration: '3-6 weeks',
-      cities: 'India + UK',
-      desc: 'Combined India-UK routing maximizing international positioning and promoter relationships.',
-    },
-    {
-      title: 'Festival Season',
-      duration: 'Seasonal',
-      cities: 'Multi-country',
-      desc: 'Festival-focused routing during peak seasons across India, UK, and European circuits.',
-    },
+    { title: 'India Circuit', duration: '2-4 weeks', cities: '4-8 cities', desc: 'Comprehensive routing across major metros' },
+    { title: 'UK/EU Showcase', duration: '1-3 weeks', cities: '3-6 cities', desc: 'Strategic exposure to UK/European markets' },
+    { title: 'Cross-Border Package', duration: '3-6 weeks', cities: 'India + UK', desc: 'Combined India-UK routing' },
+    { title: 'Festival Season', duration: 'Seasonal', cities: 'Multi-country', desc: 'Festival-focused routing' },
   ]
 
   return (
-    <main className="bg-black">
-      {/* Hero - Map/route inspired */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+    <main className="bg-black pt-20">
+      {/* Hero */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden py-16 sm:py-0">
         <div className="absolute inset-0">
           <Image
             src={service.heroImage}
@@ -103,7 +59,7 @@ export default function ServiceDetailTour({ service }) {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
           
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg className="absolute inset-0 w-full h-full hidden sm:block" viewBox="0 0 100 100" preserveAspectRatio="none">
             <motion.path
               d="M0,50 Q25,30 50,50 T100,50"
               fill="none"
@@ -116,27 +72,27 @@ export default function ServiceDetailTour({ service }) {
           </svg>
         </div>
         
-        <div className="relative z-10 px-6 md:px-12 lg:px-24 w-full">
+        <div className="relative z-10 px-4 sm:px-6 md:px-12 lg:px-24 w-full">
           <div className="max-w-6xl mx-auto">
-            <Link href="/services" className="inline-flex items-center gap-2 text-white/50 hover:text-rolling-red transition-colors mb-8">
+            <Link href="/services" className="inline-flex items-center gap-2 text-white/50 hover:text-rolling-red transition-colors mb-6 sm:mb-8">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               <span className="text-sm">Back to Services</span>
             </Link>
             
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-6xl text-rolling-red" style={{ fontFamily: 'var(--font-bebas)' }}>03</span>
+                <div className="flex items-center gap-4 mb-4 sm:mb-6">
+                  <span className="text-4xl sm:text-6xl text-rolling-red" style={{ fontFamily: 'var(--font-bebas)' }}>03</span>
                   <div className="h-px flex-1 bg-rolling-red/50" />
                 </div>
                 <h1 
-                  className="text-5xl md:text-6xl lg:text-7xl text-white leading-[0.9] mb-6"
+                  className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[0.9] mb-4 sm:mb-6"
                   style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.02em' }}
                 >
                   TOUR ROUTING &<br />
@@ -150,19 +106,19 @@ export default function ServiceDetailTour({ service }) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <p className="text-white/70 text-lg leading-relaxed mb-8">
+                <p className="text-white/70 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8">
                   {service.shortDesc}
                 </p>
                 
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-rolling-red rounded-full" />
-                    <span className="text-white text-sm">India</span>
+                    <div className="w-2 sm:w-3 h-2 sm:h-3 bg-rolling-red rounded-full" />
+                    <span className="text-white text-xs sm:text-sm">India</span>
                   </div>
                   <div className="h-px flex-1 bg-gradient-to-r from-rolling-red to-white" />
                   <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-white rounded-full" />
-                    <span className="text-white text-sm">UK</span>
+                    <div className="w-2 sm:w-3 h-2 sm:h-3 bg-white rounded-full" />
+                    <span className="text-white text-xs sm:text-sm">UK</span>
                   </div>
                 </div>
               </motion.div>
@@ -172,37 +128,37 @@ export default function ServiceDetailTour({ service }) {
       </section>
 
       {/* Stats band */}
-      <section className="py-8 px-6 md:px-12 lg:px-24 bg-rolling-red">
-        <div className="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-8">
+      <section className="py-6 sm:py-8 px-4 sm:px-6 md:px-12 lg:px-24 bg-rolling-red">
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-center sm:justify-between items-center gap-4 sm:gap-8">
           {service.stats.map((stat, idx) => (
-            <div key={idx} className="text-center">
-              <span className="text-4xl text-white font-bold" style={{ fontFamily: 'var(--font-bebas)' }}>
+            <div key={idx} className="text-center px-4">
+              <span className="text-2xl sm:text-4xl text-white font-bold" style={{ fontFamily: 'var(--font-bebas)' }}>
                 {stat.value}
               </span>
-              <p className="text-white/80 text-sm">{stat.label}</p>
+              <p className="text-white/80 text-xs sm:text-sm">{stat.label}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Routing Services Grid */}
-      <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
-            <h2 className="text-4xl text-white mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+            <h2 className="text-3xl sm:text-4xl text-white mb-3 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
               ROUTING <span className="text-rolling-red">SERVICES</span>
             </h2>
-            <p className="text-white/50 max-w-2xl mx-auto">
+            <p className="text-white/50 text-sm sm:text-base max-w-2xl mx-auto">
               Comprehensive tour planning from market analysis to execution
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {routingServices.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -210,13 +166,13 @@ export default function ServiceDetailTour({ service }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-8 bg-black border border-white/10 hover:border-rolling-red/50 transition-all group"
+                className="p-4 sm:p-8 bg-black border border-white/10 hover:border-rolling-red/50 transition-all group"
               >
-                <span className="text-3xl mb-4 block">{item.icon}</span>
-                <h3 className="text-xl text-white mb-3 group-hover:text-rolling-red transition-colors" style={{ fontFamily: 'var(--font-bebas)' }}>
+                <span className="text-2xl sm:text-3xl mb-2 sm:mb-4 block">{item.icon}</span>
+                <h3 className="text-sm sm:text-xl text-white mb-1 sm:mb-3 group-hover:text-rolling-red transition-colors" style={{ fontFamily: 'var(--font-bebas)' }}>
                   {item.title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+                <p className="text-white/50 text-xs sm:text-sm leading-relaxed hidden sm:block">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -224,27 +180,27 @@ export default function ServiceDetailTour({ service }) {
       </section>
 
       {/* Content - Timeline style */}
-      <section ref={ref} className="py-24 px-6 md:px-12 lg:px-24">
+      <section ref={ref} className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-5xl mx-auto">
           <div className="relative">
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-white/10" />
+            <div className="absolute left-4 sm:left-0 md:left-1/2 top-0 bottom-0 w-px bg-white/10" />
             
             {/* Problem */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="relative grid md:grid-cols-2 gap-8 mb-20"
+              className="relative grid md:grid-cols-2 gap-4 sm:gap-8 mb-12 sm:mb-20 pl-8 sm:pl-0"
             >
               <div className="md:text-right md:pr-12">
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-rolling-red rounded-full -translate-x-1/2" />
-                <span className="text-rolling-red text-sm tracking-wider uppercase">Challenge</span>
-                <h2 className="text-2xl text-white mt-2 mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+                <div className="absolute left-4 sm:left-0 md:left-1/2 w-3 sm:w-4 h-3 sm:h-4 bg-rolling-red rounded-full -translate-x-1/2" />
+                <span className="text-rolling-red text-xs sm:text-sm tracking-wider uppercase">Challenge</span>
+                <h2 className="text-xl sm:text-2xl text-white mt-2 mb-3 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
                   THE PROBLEM
                 </h2>
-                <p className="text-white/60 leading-relaxed">{service.fullContent.problem}</p>
+                <p className="text-white/60 text-sm sm:text-base leading-relaxed">{service.fullContent.problem}</p>
               </div>
-              <div />
+              <div className="hidden md:block" />
             </motion.div>
 
             {/* Solution */}
@@ -252,16 +208,16 @@ export default function ServiceDetailTour({ service }) {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative grid md:grid-cols-2 gap-8 mb-20"
+              className="relative grid md:grid-cols-2 gap-4 sm:gap-8 mb-12 sm:mb-20 pl-8 sm:pl-0"
             >
-              <div />
+              <div className="hidden md:block" />
               <div className="md:pl-12">
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-white rounded-full -translate-x-1/2" />
-                <span className="text-white/50 text-sm tracking-wider uppercase">Approach</span>
-                <h2 className="text-2xl text-white mt-2 mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+                <div className="absolute left-4 sm:left-0 md:left-1/2 w-3 sm:w-4 h-3 sm:h-4 bg-white rounded-full -translate-x-1/2" />
+                <span className="text-white/50 text-xs sm:text-sm tracking-wider uppercase">Approach</span>
+                <h2 className="text-xl sm:text-2xl text-white mt-2 mb-3 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
                   OUR SOLUTION
                 </h2>
-                <p className="text-white/60 leading-relaxed">{service.fullContent.solution}</p>
+                <p className="text-white/60 text-sm sm:text-base leading-relaxed">{service.fullContent.solution}</p>
               </div>
             </motion.div>
 
@@ -270,35 +226,35 @@ export default function ServiceDetailTour({ service }) {
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative grid md:grid-cols-2 gap-8 mb-20"
+              className="relative grid md:grid-cols-2 gap-4 sm:gap-8 mb-12 sm:mb-20 pl-8 sm:pl-0"
             >
               <div className="md:text-right md:pr-12">
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-rolling-red/50 rounded-full -translate-x-1/2" />
-                <span className="text-rolling-red/70 text-sm tracking-wider uppercase">Insight</span>
-                <h2 className="text-2xl text-white/70 mt-2 mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+                <div className="absolute left-4 sm:left-0 md:left-1/2 w-3 sm:w-4 h-3 sm:h-4 bg-rolling-red/50 rounded-full -translate-x-1/2" />
+                <span className="text-rolling-red/70 text-xs sm:text-sm tracking-wider uppercase">Insight</span>
+                <h2 className="text-xl sm:text-2xl text-white/70 mt-2 mb-3 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
                   THE GAP
                 </h2>
-                <p className="text-white/50 leading-relaxed">{service.fullContent.gap}</p>
+                <p className="text-white/50 text-sm sm:text-base leading-relaxed">{service.fullContent.gap}</p>
               </div>
-              <div />
+              <div className="hidden md:block" />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Market Explorer */}
-      <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-4xl text-white mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+            <h2 className="text-3xl sm:text-4xl text-white mb-3 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
               MARKET <span className="text-rolling-red">EXPLORER</span>
             </h2>
-            <p className="text-white/50 max-w-2xl mx-auto mb-8">
+            <p className="text-white/50 text-sm sm:text-base max-w-2xl mx-auto mb-6 sm:mb-8">
               Key touring markets across India and UK
             </p>
             
@@ -306,7 +262,7 @@ export default function ServiceDetailTour({ service }) {
             <div className="inline-flex gap-0 border border-white/20">
               <button
                 onClick={() => setActiveMarket('india')}
-                className={`px-8 py-3 text-sm tracking-wider transition-all ${
+                className={`px-6 sm:px-8 py-2 sm:py-3 text-xs sm:text-sm tracking-wider transition-all ${
                   activeMarket === 'india' 
                     ? 'bg-rolling-red text-white' 
                     : 'text-white/60 hover:text-white'
@@ -316,7 +272,7 @@ export default function ServiceDetailTour({ service }) {
               </button>
               <button
                 onClick={() => setActiveMarket('uk')}
-                className={`px-8 py-3 text-sm tracking-wider transition-all ${
+                className={`px-6 sm:px-8 py-2 sm:py-3 text-xs sm:text-sm tracking-wider transition-all ${
                   activeMarket === 'uk' 
                     ? 'bg-rolling-red text-white' 
                     : 'text-white/60 hover:text-white'
@@ -334,27 +290,27 @@ export default function ServiceDetailTour({ service }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+              className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
             >
               {(activeMarket === 'india' ? indiaMarkets : ukMarkets).map((market, idx) => (
                 <div
                   key={idx}
-                  className="p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-all"
+                  className="p-4 sm:p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-all"
                 >
-                  <h3 className="text-2xl text-white mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+                  <h3 className="text-xl sm:text-2xl text-white mb-2 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
                     {market.city}
                   </h3>
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                     <div className="flex justify-between">
                       <span className="text-white/50">Venues</span>
                       <span className="text-white">{market.venues}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-white/50">Genre Focus</span>
-                      <span className="text-rolling-red">{market.genre}</span>
+                      <span className="text-white/50">Genre</span>
+                      <span className="text-rolling-red text-right">{market.genre}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-white/50">Peak Season</span>
+                      <span className="text-white/50">Peak</span>
                       <span className="text-white">{market.peak}</span>
                     </div>
                   </div>
@@ -366,19 +322,19 @@ export default function ServiceDetailTour({ service }) {
       </section>
 
       {/* Tour Types */}
-      <section className="py-24 px-6 md:px-12 lg:px-24">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-12 text-center"
+            className="text-2xl sm:text-3xl text-white mb-8 sm:mb-12 text-center"
             style={{ fontFamily: 'var(--font-bebas)' }}
           >
             TOUR <span className="text-rolling-red">PACKAGES</span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
             {tourTypes.map((tour, idx) => (
               <motion.div
                 key={idx}
@@ -386,12 +342,12 @@ export default function ServiceDetailTour({ service }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="p-8 bg-[#050505] border border-white/10 hover:border-rolling-red/50 transition-all"
+                className="p-5 sm:p-8 bg-[#050505] border border-white/10 hover:border-rolling-red/50 transition-all"
               >
-                <h3 className="text-2xl text-white mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+                <h3 className="text-xl sm:text-2xl text-white mb-3 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
                   {tour.title}
                 </h3>
-                <div className="flex gap-6 mb-4 text-sm">
+                <div className="flex gap-4 sm:gap-6 mb-3 sm:mb-4 text-xs sm:text-sm">
                   <div>
                     <span className="text-white/50 block">Duration</span>
                     <span className="text-rolling-red">{tour.duration}</span>
@@ -401,7 +357,7 @@ export default function ServiceDetailTour({ service }) {
                     <span className="text-rolling-red">{tour.cities}</span>
                   </div>
                 </div>
-                <p className="text-white/60">{tour.desc}</p>
+                <p className="text-white/60 text-sm">{tour.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -409,18 +365,18 @@ export default function ServiceDetailTour({ service }) {
       </section>
 
       {/* Deliverables */}
-      <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#050505]">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="max-w-5xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-8 text-center"
+            className="text-2xl sm:text-3xl text-white mb-6 sm:mb-8 text-center"
             style={{ fontFamily: 'var(--font-bebas)' }}
           >
             WHAT WE <span className="text-rolling-red">DELIVER</span>
           </motion.h2>
-          <div className="flex overflow-x-auto gap-4 pb-4 -mx-6 px-6 scrollbar-hide">
+          <div className="flex overflow-x-auto gap-3 sm:gap-4 pb-4 -mx-4 px-4 scrollbar-hide">
             {service.fullContent.deliverables.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -428,12 +384,12 @@ export default function ServiceDetailTour({ service }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className="flex-shrink-0 w-64 p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-colors"
+                className="flex-shrink-0 w-48 sm:w-64 p-4 sm:p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-colors"
               >
-                <span className="text-rolling-red text-3xl" style={{ fontFamily: 'var(--font-bebas)' }}>
+                <span className="text-2xl sm:text-3xl text-rolling-red" style={{ fontFamily: 'var(--font-bebas)' }}>
                   {String(idx + 1).padStart(2, '0')}
                 </span>
-                <p className="text-white mt-4">{item}</p>
+                <p className="text-white text-sm mt-3 sm:mt-4">{item}</p>
               </motion.div>
             ))}
           </div>
@@ -441,37 +397,37 @@ export default function ServiceDetailTour({ service }) {
       </section>
 
       {/* Outcome */}
-      <section className="py-24 px-6 md:px-12 lg:px-24">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-12 bg-gradient-to-r from-rolling-red/20 to-transparent border-l-4 border-rolling-red"
+            className="p-6 sm:p-12 bg-gradient-to-r from-rolling-red/20 to-transparent border-l-4 border-rolling-red"
           >
-            <h2 className="text-xl text-rolling-red mb-4 tracking-wider uppercase">The Destination</h2>
-            <p className="text-white/80 text-xl leading-relaxed">{service.fullContent.outcome}</p>
+            <h2 className="text-lg sm:text-xl text-rolling-red mb-3 sm:mb-4 tracking-wider uppercase">The Destination</h2>
+            <p className="text-white/80 text-base sm:text-xl leading-relaxed">{service.fullContent.outcome}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Related Services */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-[#050505]">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#050505]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl text-white mb-8" style={{ fontFamily: 'var(--font-bebas)' }}>
+          <h2 className="text-xl sm:text-2xl text-white mb-6 sm:mb-8" style={{ fontFamily: 'var(--font-bebas)' }}>
             RELATED <span className="text-rolling-red">SERVICES</span>
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/services/artist-management" className="p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-all group">
-              <span className="text-rolling-red text-sm tracking-wider">CAREER DEVELOPMENT</span>
-              <h3 className="text-xl text-white mt-2 group-hover:text-rolling-red transition-colors" style={{ fontFamily: 'var(--font-bebas)' }}>
-                ARTIST MANAGEMENT & TALENT DEVELOPMENT
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+            <Link href="/services/artist-management" className="p-4 sm:p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-all group">
+              <span className="text-rolling-red text-xs sm:text-sm tracking-wider">CAREER DEVELOPMENT</span>
+              <h3 className="text-lg sm:text-xl text-white mt-2 group-hover:text-rolling-red transition-colors" style={{ fontFamily: 'var(--font-bebas)' }}>
+                ARTIST MANAGEMENT
               </h3>
             </Link>
-            <Link href="/services/strategic-partnerships" className="p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-all group">
-              <span className="text-rolling-red text-sm tracking-wider">NETWORK ACCESS</span>
-              <h3 className="text-xl text-white mt-2 group-hover:text-rolling-red transition-colors" style={{ fontFamily: 'var(--font-bebas)' }}>
-                STRATEGIC PARTNERSHIPS & BUSINESS DEVELOPMENT
+            <Link href="/services/strategic-partnerships" className="p-4 sm:p-6 bg-black border border-white/10 hover:border-rolling-red/50 transition-all group">
+              <span className="text-rolling-red text-xs sm:text-sm tracking-wider">NETWORK ACCESS</span>
+              <h3 className="text-lg sm:text-xl text-white mt-2 group-hover:text-rolling-red transition-colors" style={{ fontFamily: 'var(--font-bebas)' }}>
+                STRATEGIC PARTNERSHIPS
               </h3>
             </Link>
           </div>
@@ -479,19 +435,19 @@ export default function ServiceDetailTour({ service }) {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-black">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 md:px-12 lg:px-24 bg-black">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-3xl text-white mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
+          <h3 className="text-2xl sm:text-3xl text-white mb-3 sm:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>
             READY TO <span className="text-rolling-red">HIT THE ROAD?</span>
           </h3>
-          <p className="text-white/60 mb-8 max-w-xl mx-auto">
-            Let's build a touring strategy that expands your markets, grows your audience, and maximizes your live presence.
+          <p className="text-white/60 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto">
+            Let's build a touring strategy that expands your markets and grows your audience.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="mailto:info@bridgeline-creative.com" className="px-8 py-4 bg-rolling-red text-white text-sm tracking-wider uppercase hover:bg-white hover:text-black transition-all">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <a href="mailto:info@bridgeline-creative.com" className="px-6 sm:px-8 py-3 sm:py-4 bg-rolling-red text-white text-sm tracking-wider uppercase hover:bg-white hover:text-black transition-all">
               Plan Your Tour
             </a>
-            <Link href="/services" className="px-8 py-4 border border-white/30 text-white text-sm tracking-wider uppercase hover:border-rolling-red hover:text-rolling-red transition-all">
+            <Link href="/services" className="px-6 sm:px-8 py-3 sm:py-4 border border-white/30 text-white text-sm tracking-wider uppercase hover:border-rolling-red hover:text-rolling-red transition-all">
               View All Services
             </Link>
           </div>

@@ -22,7 +22,7 @@ export default function ServiceCard({ service, index }) {
       {/* Image side - Clickable */}
       <Link 
         href={`/services/${service.slug}`}
-        className={`relative h-[400px] lg:h-[500px] overflow-hidden cursor-pointer block ${!isEven ? 'lg:order-2' : ''}`}
+        className={`relative h-[280px] sm:h-[350px] lg:h-[500px] overflow-hidden cursor-pointer block ${!isEven ? 'lg:order-2' : ''}`}
       >
         <Image
           src={service.image}
@@ -55,37 +55,37 @@ export default function ServiceCard({ service, index }) {
       </Link>
       
       {/* Content side */}
-      <div className={`relative flex flex-col justify-center p-8 lg:p-12 bg-[#0a0a0a] ${!isEven ? 'lg:order-1' : ''}`}>
+      <div className={`relative flex flex-col justify-center p-5 sm:p-8 lg:p-12 bg-[#0a0a0a] ${!isEven ? 'lg:order-1' : ''}`}>
         {/* Accent line */}
         <div className={`absolute top-0 ${isEven ? 'left-0' : 'right-0'} w-1 h-full bg-gradient-to-b from-rolling-red via-rolling-red/50 to-transparent`} />
         
         {/* Icon */}
-        <div className="w-14 h-14 flex items-center justify-center bg-rolling-red/10 border border-rolling-red/30 mb-6 group-hover:bg-rolling-red group-hover:border-rolling-red transition-all duration-300">
-          <span className="text-rolling-red text-2xl group-hover:text-white transition-colors duration-300">
+        <div className="w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center bg-rolling-red/10 border border-rolling-red/30 mb-4 sm:mb-6 group-hover:bg-rolling-red group-hover:border-rolling-red transition-all duration-300">
+          <span className="text-rolling-red text-lg sm:text-2xl group-hover:text-white transition-colors duration-300">
             {service.icon}
           </span>
         </div>
         
         {/* Title */}
         <h3 
-          className="text-3xl md:text-4xl text-white mb-4 group-hover:text-rolling-red transition-colors duration-300"
+          className="text-2xl sm:text-3xl md:text-4xl text-white mb-2 sm:mb-4 group-hover:text-rolling-red transition-colors duration-300"
           style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.02em' }}
         >
           {service.title}
         </h3>
         
         {/* Tagline */}
-        <p className="text-rolling-red text-sm tracking-wider uppercase mb-4">
+        <p className="text-rolling-red text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4">
           {service.tagline}
         </p>
         
         {/* Description */}
-        <p className="text-white/60 leading-relaxed mb-6">
+        <p className="text-white/60 text-sm leading-relaxed mb-4 sm:mb-6">
           {service.shortDesc}
         </p>
         
-        {/* Key points */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        {/* Key points - Hide on mobile */}
+        <div className="hidden sm:flex flex-wrap gap-2 mb-8">
           {service.keyPoints.slice(0, 4).map((point, idx) => (
             <span 
               key={idx}

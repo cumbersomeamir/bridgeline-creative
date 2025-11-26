@@ -316,7 +316,7 @@ function Scene() {
 
 export default function Globe3D() {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-x-0 top-0 h-[500px] md:h-full md:inset-0 z-0">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 50 }}
         dpr={[1, 2]}

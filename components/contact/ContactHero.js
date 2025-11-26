@@ -18,7 +18,7 @@ export default function ContactHero() {
   const isInView = useInView(ref, { once: true })
 
   return (
-    <section ref={ref} className="relative h-[60vh] min-h-[500px] w-full overflow-hidden bg-black">
+    <section ref={ref} className="relative min-h-[50vh] sm:h-[60vh] sm:min-h-[500px] w-full overflow-hidden bg-black pt-20">
       {/* 3D Background */}
       <ConnectionSphere3D />
       
@@ -26,19 +26,19 @@ export default function ContactHero() {
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-black/20 to-black" />
       
       {/* Content */}
-      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-6">
+      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 py-12 sm:py-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl pt-20"
+          className="max-w-3xl"
         >
           {/* Main headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-4 sm:mb-6"
             style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.02em' }}
           >
             <span className="text-rolling-red">GET IN</span>{' '}
@@ -50,7 +50,7 @@ export default function ContactHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+            className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
           >
             Let's build culture, together.
           </motion.p>

@@ -83,7 +83,7 @@ function TiltCard({ value, index }) {
 
   // Masonry layout - alternating heights
   const isLarge = index % 3 === 0
-  const height = isLarge ? 'h-[500px]' : 'h-[400px]'
+  const height = isLarge ? 'h-[350px] sm:h-[500px]' : 'h-[300px] sm:h-[400px]'
 
   return (
     <motion.div
@@ -136,14 +136,14 @@ function TiltCard({ value, index }) {
         
         {/* Number - 3D floating */}
         <motion.div 
-          className="absolute top-6 right-6"
+          className="absolute top-4 sm:top-6 right-4 sm:right-6"
           style={{
             translateZ: '50px',
             transformStyle: 'preserve-3d',
           }}
         >
           <span 
-            className="text-8xl text-white/5 group-hover:text-rolling-red/20 transition-colors duration-500"
+            className="text-5xl sm:text-8xl text-white/5 group-hover:text-rolling-red/20 transition-colors duration-500"
             style={{ fontFamily: 'var(--font-bebas)' }}
           >
             {value.number}
@@ -152,7 +152,7 @@ function TiltCard({ value, index }) {
         
         {/* Short title - floating tag */}
         <motion.div
-          className="absolute top-6 left-6"
+          className="absolute top-4 sm:top-6 left-4 sm:left-6"
           initial={{ x: -20, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -208,7 +208,7 @@ export default function Values() {
   const isInView = useInView(ref, { once: true, margin: '-50px' })
 
   return (
-    <section ref={ref} className="relative py-32 px-6 md:px-12 lg:px-24 bg-black overflow-hidden">
+    <section ref={ref} className="relative py-16 sm:py-32 px-4 sm:px-6 md:px-12 lg:px-24 bg-black overflow-hidden">
       {/* Animated gradient background */}
       <motion.div 
         className="absolute inset-0 opacity-30"

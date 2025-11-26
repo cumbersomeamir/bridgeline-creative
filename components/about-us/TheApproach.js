@@ -98,7 +98,7 @@ export default function TheApproach() {
   }, [])
 
   return (
-    <section ref={ref} className="relative py-32 px-6 md:px-12 lg:px-24 bg-[#0a0a0a] overflow-hidden">
+    <section ref={ref} className="relative py-16 sm:py-32 px-4 sm:px-6 md:px-12 lg:px-24 bg-[#0a0a0a] overflow-hidden">
       {/* Background grid */}
       <div 
         className="absolute inset-0 opacity-10"

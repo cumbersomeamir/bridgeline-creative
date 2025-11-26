@@ -72,9 +72,9 @@ export default function OurStory() {
   const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0])
 
   return (
-    <section ref={containerRef} className="relative h-[400vh] bg-black">
+    <section ref={containerRef} className="relative h-[300vh] sm:h-[400vh] bg-black">
       {/* Sticky container */}
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-screen overflow-hidden pt-0">
         {/* Background pattern - animated dots grid */}
         <div className="absolute inset-0 opacity-20">
           <div 
@@ -89,11 +89,11 @@ export default function OurStory() {
         {/* Section intro */}
         <motion.div
           style={{ opacity }}
-          className="absolute top-24 left-6 md:left-12 lg:left-24 z-20"
+          className="absolute top-4 sm:top-24 left-4 sm:left-6 md:left-12 lg:left-24 z-20"
         >
-          <p className="text-rolling-red text-sm tracking-[0.3em] uppercase mb-2">Our Journey</p>
+          <p className="text-rolling-red text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-2">Our Journey</p>
           <h2 
-            className="text-3xl md:text-5xl text-white"
+            className="text-2xl sm:text-3xl md:text-5xl text-white"
             style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.02em' }}
           >
             <FloatingWord delay={0}>FROM</FloatingWord>{' '}
@@ -119,7 +119,7 @@ export default function OurStory() {
         <motion.div 
           ref={horizontalRef}
           style={{ x: smoothX }}
-          className="absolute top-0 h-full flex items-center pt-32"
+          className="absolute top-0 h-full flex items-start sm:items-center pt-16 sm:pt-32"
         >
           <div className="flex gap-4 md:gap-8 pl-6 md:pl-12 lg:pl-24 pr-[50vw]">
             {storyMilestones.map((milestone, index) => (
@@ -132,7 +132,7 @@ export default function OurStory() {
                 className="relative flex-shrink-0 w-[85vw] md:w-[45vw] lg:w-[35vw] group"
               >
                 {/* Card */}
-                <div className="relative h-[60vh] overflow-hidden border border-white/10 group-hover:border-rolling-red/50 transition-colors duration-500">
+                <div className="relative h-[50vh] sm:h-[60vh] overflow-hidden border border-white/10 group-hover:border-rolling-red/50 transition-colors duration-500">
                   {/* Image with parallax */}
                   <motion.div 
                     className="absolute inset-0"
@@ -151,7 +151,7 @@ export default function OurStory() {
                   
                   {/* Year - massive background */}
                   <motion.span 
-                    className="absolute -right-4 top-4 text-[12rem] md:text-[15rem] text-white/5 group-hover:text-rolling-red/10 transition-colors duration-500 font-bold leading-none select-none"
+                    className="absolute -right-4 top-4 text-[8rem] sm:text-[12rem] md:text-[15rem] text-white/5 group-hover:text-rolling-red/10 transition-colors duration-500 font-bold leading-none select-none"
                     style={{ fontFamily: 'var(--font-bebas)' }}
                   >
                     {milestone.year}
@@ -174,23 +174,23 @@ export default function OurStory() {
                   </div>
                   
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                      <span className="text-rolling-red text-sm tracking-wider uppercase mb-2 block">
+                      <span className="text-rolling-red text-xs sm:text-sm tracking-wider uppercase mb-2 block">
                         {milestone.location}
                       </span>
                       <h3 
-                        className="text-3xl md:text-4xl text-white mb-3"
+                        className="text-2xl sm:text-3xl md:text-4xl text-white mb-2 sm:mb-3"
                         style={{ fontFamily: 'var(--font-bebas)', letterSpacing: '0.02em' }}
                       >
                         {milestone.title}
                       </h3>
-                      <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                      <p className="text-white/70 text-xs sm:text-sm md:text-base leading-relaxed">
                         {milestone.description}
                       </p>
                     </motion.div>

@@ -90,7 +90,7 @@ export default function Vision() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center py-32 px-6 md:px-12 lg:px-24">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center py-16 sm:py-32 px-4 sm:px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto w-full">
           {/* Header with split reveal */}
           <div className="mb-20 overflow-hidden">
