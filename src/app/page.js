@@ -24,6 +24,6 @@ export default function Home() {
       <Philosophy />
       <SocialProof />
       <Contact />
-    </main>
+      </main>
   )
 }

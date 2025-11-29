@@ -21,7 +21,7 @@ const services = [
       'Narrative building',
       'Partnerships & collaborations',
     ],
-    note: 'Our roster — currently featuring EXCLM and REN — reflects our commitment to emerging talent with international potential.',
+    note: 'Our roster — currently featuring EXCLM and RENS — reflects our commitment to emerging talent with international potential.',
   },
   {
     id: 2,

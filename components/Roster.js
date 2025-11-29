@@ -9,14 +9,14 @@ const artists = [
     name: 'EXCLM',
     role: 'Electronic Artist',
     description: 'High-impact electronic artist with a cinematic sonic identity and India-wide touring presence.',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80',
+    image: '/exclm.jpg',
     tags: ['Electronic', 'Cinematic', 'India'],
   },
   {
-    name: 'REN',
+    name: 'RENS',
     role: 'Underground Performer',
     description: 'Dynamic underground performer with UK–India crossover potential and a strong visual aesthetic.',
-    image: 'https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=800&q=80',
+    image: '/rens.png',
     tags: ['Underground', 'UK-India', 'Visual'],
   },
 ]
