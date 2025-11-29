@@ -13,7 +13,7 @@ const artists = [
     tags: ['Electronic', 'Cinematic', 'India'],
   },
   {
-    name: 'RENS',
+    name: 'REN',
     role: 'Underground Performer',
     description: 'Dynamic underground performer with UK–India crossover potential and a strong visual aesthetic.',
     image: '/rens.png',
